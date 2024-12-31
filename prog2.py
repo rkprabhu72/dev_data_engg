@@ -8,6 +8,7 @@ df.fillna(0, inplace=True)
 df.replace("(NA)", 0, inplace=True)
 df.replace("(S)", 0, inplace=True)
 print (df.head(5))
+
 connection = mysql.connector.connect(
     host="localhost",         
     user="root",              
@@ -50,4 +51,5 @@ connection.commit()
 cursor.close()
 connection.close()
 
-print(f"Data Inserted Successfully '{table_name}'!!!")
+print(f"Data Inserted Successfully in MySQL '{table_name}'!!!")
+print
