@@ -1,0 +1,25 @@
+import pandas as pd
+import os
+
+filespath = "/Users/rkprabhu/Downloads/tempCSVs_11"  
+
+# Step 2: List all .csv files in the folder
+csvfiles = [file for file in os.listdir(filespath) if file.endswith('.csv')]
+
+# Step 3: Initialize an empty list to hold the DataFrames
+master_df_list = []
+
+# Step 4: Loop through each .csv file, read it into a DataFrame, and append it to the list
+for file in csvfiles:
+    filepath = os.path.join(filespath, file)
+    df = pd.read_csv(filepath)  # Read the .csv file into a DataFrame
+    master_df_list.append(df)  # Append the DataFrame to the list
+
+# Step 5: Concatenate all the DataFrames into a single DataFrame
+master_df = pd.concat(master_df_list, ignore_index=True)
+
+# Step 6: Save the combined DataFrame as a new .csv file
+output = "/Users/rkprabhu/Downloads/master_df.csv"  # Replace with the desired output file path
+master_df.to_csv(output, index=False)
+
+
